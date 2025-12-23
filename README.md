@@ -6,7 +6,7 @@ this is a template for creating personalized MCP servers. You can see [larkin-mc
 
 # demo
 
-![demo](https://github.com/user-attachments/assets/724f5074-8230-49bb-8082-6e7d659b2952)
+![demo](https://www.dropbox.com/scl/fi/ywoliuz66rcfafem1sy24/yourname-mcp-demo.mp4?rlkey=6d8ceujwy3ibf6u2ti0hkytae&st=tfaful6w&raw=1))
 (sorry in advance about the low rez)
 
 ## tech
