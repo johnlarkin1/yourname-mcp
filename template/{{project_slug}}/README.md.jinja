@@ -25,7 +25,31 @@ uv run {{ project_name }}
 
 ## Usage with Claude Desktop
 
-Add to your Claude Desktop configuration (`claude_desktop_config.json`):
+### local (no pypi needed)
+
+if you haven't published to pypi, point claude desktop to your local project:
+
+```json
+{
+  "mcpServers": {
+    "{{ project_name }}": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/{{ project_name }}",
+        "{{ project_name }}"
+      ]
+    }
+  }
+}
+```
+
+make sure you've run `uv sync` first!
+
+### from pypi
+
+if you've published to pypi:
 
 ```json
 {

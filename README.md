@@ -6,7 +6,7 @@ this is a template for creating personalized MCP servers. You can see [larkin-mc
 
 # demo
 
-https://github.com/user-attachments/assets/724f5074-8230-49bb-8082-6e7d659b2952
+![demo](https://github.com/user-attachments/assets/724f5074-8230-49bb-8082-6e7d659b2952)
 (sorry in advance about the low rez)
 
 ## tech
@@ -20,7 +20,6 @@ a MCP server that exposes your professional information (or really whatever you 
 ## getting started
 
 this should really be all you need to do:
-
 
 ### without cloning:
 
@@ -87,9 +86,49 @@ uv build
 uv publish  # Requires PyPI token
 ```
 
+## using your local version (no pypi needed)
+
+if you don't want to deal with pypi, you can just point claude desktop to your local project. the key is using `uv run --directory` to tell uv where your project lives:
+
+```json
+{
+  "mcpServers": {
+    "yourname-mcp": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/absolute/path/to/your/yourname-mcp",
+        "yourname-mcp"
+      ]
+    }
+  }
+}
+```
+
+so if your project is at `~/code/johnsmith-mcp`, it'd look like:
+
+```json
+{
+  "mcpServers": {
+    "johnsmith-mcp": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--directory",
+        "/Users/johnsmith/code/johnsmith-mcp",
+        "johnsmith-mcp"
+      ]
+    }
+  }
+}
+```
+
+just make sure you've run `uv sync` in your project directory first!
+
 ## using your published version
 
-after you've published it, you can set this up in claude code or you can basically extend your claude_desktop.config.
+after you've published it, you can set this up in claude code or you can basically extend your claude_desktop.config. the config is cleaner since `uvx` fetches it automatically.
 
 here's an example for mine:
 
@@ -106,6 +145,19 @@ you'll want a similar path. And then you'll have something like:
     "yourname-mcp": {
       "command": "uvx",
       "args": ["yourname-mcp"]
+    }
+  }
+}
+```
+
+or for local (from within your project directory):
+
+```json
+{
+  "mcpServers": {
+    "yourname-mcp": {
+      "command": "uv",
+      "args": ["run", "yourname-mcp"]
     }
   }
 }
