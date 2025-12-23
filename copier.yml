@@ -1,0 +1,78 @@
+# Copier configuration for yourname-mcp template
+_min_copier_version: "9.0.0"
+
+_subdirectory: template
+
+_message_before_copy: |
+  Welcome to yourname-mcp!
+
+  This will create a personalized MCP (Model Context Protocol) server
+  that exposes your professional information to LLMs like Claude.
+
+  After generation, you'll need to:
+  1. Fill in the content markdown files in src/resources/content/
+  2. Run `uv sync` to install dependencies
+  3. Test with `uv run pytest`
+  4. Build with `uv build` and publish with `uv publish`
+
+_message_after_copy: |
+  Your MCP server has been created!
+
+  Next steps:
+  1. cd {{ project_slug }}
+  2. Edit the markdown files in src/resources/content/
+  3. uv sync
+  4. uv run pytest
+  5. uv run {{ project_slug }}
+
+  To publish to PyPI:
+  1. uv build
+  2. uv publish
+
+# Questions
+project_name:
+  type: str
+  help: "Package name for PyPI (e.g., 'johnsmith-mcp'). Must be lowercase, use hyphens, end with '-mcp'."
+  validator: "{% if not project_name | regex_search('^[a-z][a-z0-9-]*-mcp$') %}Must be lowercase, start with letter, use hyphens, and end with '-mcp'{% endif %}"
+
+project_slug:
+  type: str
+  default: "{{ project_name }}"
+  when: false
+
+person_full_name:
+  type: str
+  help: "Your full name (e.g., 'John Smith')"
+
+person_first_name:
+  type: str
+  help: "Your first name (used in prompts, e.g., 'John')"
+  default: "{{ person_full_name.split()[0] if ' ' in person_full_name else person_full_name }}"
+
+uri_scheme:
+  type: str
+  help: "URI scheme for resources (e.g., 'smith' creates 'smith://resume')"
+  default: "{{ person_full_name.split()[-1].lower() if ' ' in person_full_name else person_full_name.lower() }}"
+
+github_username:
+  type: str
+  help: "Your GitHub username"
+
+email:
+  type: str
+  help: "Your email address"
+
+website_url:
+  type: str
+  help: "Your website URL (optional, press Enter to skip)"
+  default: ""
+
+location:
+  type: str
+  help: "Your location (optional, e.g., 'New York, NY')"
+  default: ""
+
+project_description:
+  type: str
+  help: "Short project description for PyPI"
+  default: "An MCP server providing information about {{ person_full_name }}"

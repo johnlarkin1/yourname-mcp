@@ -1,0 +1,86 @@
+# {{ project_name }}
+
+An MCP (Model Context Protocol) server that provides information about {{ person_full_name }}.
+
+## Installation
+
+### From PyPI
+
+```bash
+# Using uvx (recommended)
+uvx {{ project_name }}
+
+# Or using pip
+pip install {{ project_name }}
+```
+
+### From Source
+
+```bash
+git clone https://github.com/{{ github_username }}/{{ project_name }}.git
+cd {{ project_name }}
+uv sync
+uv run {{ project_name }}
+```
+
+## Usage with Claude Desktop
+
+Add to your Claude Desktop configuration (`claude_desktop_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "{{ project_name }}": {
+      "command": "uvx",
+      "args": ["{{ project_name }}"]
+    }
+  }
+}
+```
+
+## Available Resources
+
+- `{{ uri_scheme }}://resume` - Full resume in markdown
+- `{{ uri_scheme }}://bio` - Extended biography
+- `{{ uri_scheme }}://projects` - Project portfolio
+- `{{ uri_scheme }}://contact` - Contact information
+- `{{ uri_scheme }}://skills` - Technical skills
+- `{{ uri_scheme }}://work` - Work experience
+
+## Available Tools
+
+- `get_resume()` - Get full resume
+- `get_bio()` - Get biography
+- `get_contact()` - Get contact info
+- `get_projects()` - Get projects
+- `get_skills()` - Get skills
+- `get_work()` - Get work history
+- `search_info(query)` - Search across all resources
+- `health_check()` - Check server status
+
+## Available Prompts
+
+- `summarize_for_role(role)` - Generate a tailored summary for a job role
+- `compare_to_job(job_description)` - Analyze fit for a job description
+- `interview_prep(role, company)` - Generate interview prep materials
+- `project_deep_dive(project_name)` - Get detailed project information
+
+## Development
+
+```bash
+# Install dependencies
+uv sync
+
+# Run tests
+uv run pytest
+
+# Run the server locally
+uv run {{ project_name }}
+```
+
+## Publishing
+
+```bash
+uv build
+uv publish
+```
