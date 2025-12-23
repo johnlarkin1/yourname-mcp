@@ -1,0 +1,24 @@
+from pathlib import Path
+
+# MCP General
+MCP_NAME = "{{ project_name }}"
+MCP_INSTRUCTIONS = (
+    "This server provides information about {{ person_full_name }} "
+    "(GitHub profile: {{ github_username }}{% if website_url %}, site: {{ website_url }}{% endif %}) and "
+    "allows helpful tooling for more info"
+)
+{% if website_url %}
+MCP_WEBSITE_URL = "{{ website_url }}"
+{% else %}
+MCP_WEBSITE_URL = "https://github.com/{{ github_username }}/{{ project_name }}"
+{% endif %}
+MCP_VERSION = "1.0.0"
+
+# Resources
+RESOURCES_DIR = Path(__file__).parent / "resources" / "content"
+RESOURCES_CATEGORIES = ["resume", "bio", "projects", "contact", "skills", "work"]
+
+# Resume
+RESUME_DATE_VERSION = "{{ '%Y-%m-%d' | strftime }}"
+RESUME_PDF_PATH = RESOURCES_DIR / "resume" / "resume.pdf"
+RESUME_MD_PATH = RESOURCES_DIR / "resume" / "resume.md"
