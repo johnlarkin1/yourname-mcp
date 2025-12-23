@@ -1,3 +1,5 @@
+![larkin-mcp](https://github.com/user-attachments/assets/ff8ff390-e9c9-4ddd-bc8a-e8dbecbab248)
+
 # yourname-mcp
 
 this is a template for creating personalized MCP servers. You can see [larkin-mcp](https://github.com/johnlarkin1/larkin-mcp) as an example, or check out my blog post about it [here](https://johnlarkin1.github.io/2025/larkin-mcp). It's technically a slightly more slimmed down version given I only really am trying to support `uvx` + `pypi` installs...
