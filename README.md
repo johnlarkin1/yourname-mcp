@@ -4,6 +4,11 @@
 
 this is a template for creating personalized MCP servers. You can see [larkin-mcp](https://github.com/johnlarkin1/larkin-mcp) as an example, or check out my blog post about it [here](https://johnlarkin1.github.io/2025/larkin-mcp). It's technically a slightly more slimmed down version given I only really am trying to support `uvx` + `pypi` installs...
 
+# demo
+
+https://github.com/user-attachments/assets/724f5074-8230-49bb-8082-6e7d659b2952
+(sorry in advance about the low rez)
+
 ## tech
 
 this is using [`copier`](https://copier.readthedocs.io/) which is basically a more up to date `cookiecutter` + `jinja` project. I honestly hadn't heard of it before asking ChatGPT if there were alternatives or more up to date projects. But here we are.
@@ -15,6 +20,7 @@ a MCP server that exposes your professional information (or really whatever you 
 ## getting started
 
 this should really be all you need to do:
+
 
 ### without cloning:
 
